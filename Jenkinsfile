@@ -14,12 +14,17 @@ pipeline {
 
         stage('docker build') {
             steps {
-                sh 'docker build -t registry.cn-hangzhou.aliyuncs.com/huorepo/jenkins-demo:${build_tag} .'
+                sh 'docker build -t registry.cn-hangzhou.aliyuncs.com/huorepo/jenkins-demo:${BUILD_NUMBER} .'
             }
         }
 
-         stage('Push') {
-            septs {
-                sh "docker login -u 247020988@qq.com -p 778825hh"
-                sh "docker push registry.cn-hangzhou.aliyuncs.com/huorepo/jenkins-demo:${build_tag}"
+        stage ('docker push') {
+            steps {           
+                sh 'docker login registry.cn-hangzhou.aliyuncs.com -u 274020988@qq.com -p 778825hh'
+                sh 'docker push registry.cn-hangzhou.aliyuncs.com/huorepo/jenkins-demo:${BUILD_NUMBER}'
+            }
         }
+
+    }
+
+}
