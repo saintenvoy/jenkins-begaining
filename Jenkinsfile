@@ -23,5 +23,3 @@ pipeline {
                 sh "docker login -u 247020988@qq.com -p 778825hh"
                 sh "docker push registry.cn-hangzhou.aliyuncs.com/huorepo/jenkins-demo:${build_tag}"
         }
-   
-}
