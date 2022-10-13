@@ -14,20 +14,16 @@ pipeline {
 
         stage('docker build') {
             steps {
-                sh 'docker build -t nodoejs:latest .'
+                sh 'docker build -t registry.cn-hangzhou.aliyuncs.com/huorepo/jenkins-demo:${build_tag} .'
             }
         }
 
-        stage ('test') {
-            steps {           
-                sh 'docker images'
-            }
+         stage('Push') {
+            septs {
+                sh "docker login -u 247020988@qq.com -p 778825hh"
+                sh "docker push registry.cn-hangzhou.aliyuncs.com/huorepo/jenkins-demo:${build_tag}"
         }
 
     }
-    post {
-        failure {
-            mail to: 'team@example.com', subject: 'Pipeline failed', body: "${env.BUILD_URL}"
-        }
-    }
+   
 }
