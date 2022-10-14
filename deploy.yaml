@@ -12,9 +12,9 @@ spec:
         app: jenkins-demo
     spec:
       containers:
-      - image: registry.cn-hangzhou.aliyuncs.com/huorepo/jenkins-demo:${BUILD_NUMBER}
+      - image: registry.cn-hangzhou.aliyuncs.com/huorepo/jenkins-demo:<BUILD_TAG>
         imagePullPolicy: IfNotPresent
         name: jenkins-demo
         env:
         - name: branch
-          value: main
+          value: <BRANCH_NAME>
