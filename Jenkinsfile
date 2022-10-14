@@ -30,13 +30,6 @@ pipeline {
             }
         }
 
-         stage ('docker logout') {
-            steps {          
-                echo "3. docker logout"
-                sh 'docker logout ${dockerhub}'
-            }
-        }
-
         stage ('YAML') {
             steps {
                 echo "4. Change YAML File Stage"
@@ -55,6 +48,12 @@ pipeline {
             
         }
 
+    }
+    post {
+        
+        alway {
+            sh 'docker logout'
+        }
     }
 
 }
