@@ -3,6 +3,8 @@ pipeline {
     environment {
         branch = 'main'
         scmUrl = 'git@github.com:saintenvoy/jenkins-beginning.git'
+        dockerhub = 'registry.cn-hangzhou.aliyuncs.com'
+        DOCKERHUB_CREDENTIALS=credentials('dockerHub')
 
     }
     stages {
@@ -16,15 +18,22 @@ pipeline {
         stage('docker build') {
             steps {
                 echo "2. docker build"
-                sh 'docker build -t registry.cn-hangzhou.aliyuncs.com/huorepo/jenkins-demo:${BUILD_NUMBER} .'
+                sh 'docker build -t ${dockerhub}/huorepo/jenkins-demo:${BUILD_NUMBER} .'
             }
         }
 
         stage ('docker push') {
             steps {          
-                echo "3. docker push"
-                sh 'docker login registry.cn-hangzhou.aliyuncs.com -u 274020988@qq.com -p 778825hh'
-                sh 'docker push registry.cn-hangzhou.aliyuncs.com/huorepo/jenkins-demo:${BUILD_NUMBER}'
+                echo "3. docker login & push"
+                sh 'echo ${DOCKERHUB_CREDENTIALS_PSW} | docker login ${dockerhub} -u ${DOCKERHUB_CREDENTIALS_USR} --password-stdin'
+                sh 'docker push ${dockerhub}/huorepo/jenkins-demo:${BUILD_NUMBER}'
+            }
+        }
+
+         stage ('docker logout') {
+            steps {          
+                echo "3. docker logout"
+                sh 'docker logout ${dockerhub}'
             }
         }
 
