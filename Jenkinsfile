@@ -15,14 +15,14 @@ pipeline {
 
         stage('docker build') {
             steps {
-                echo ". docker build"
+                echo "2. docker build"
                 sh 'docker build -t registry.cn-hangzhou.aliyuncs.com/huorepo/jenkins-demo:${BUILD_NUMBER} .'
             }
         }
 
         stage ('docker push') {
             steps {          
-                 echo "3. docker push"
+                echo "3. docker push"
                 sh 'docker login registry.cn-hangzhou.aliyuncs.com -u 274020988@qq.com -p 778825hh'
                 sh 'docker push registry.cn-hangzhou.aliyuncs.com/huorepo/jenkins-demo:${BUILD_NUMBER}'
             }
