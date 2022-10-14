@@ -12,7 +12,7 @@ spec:
         app: jenkins-demo
     spec:
       containers:
-      - image: registry.cn-hangzhou.aliyuncs.com/huorepo/jenkins-demo:<BUILD_NUMBER>
+      - image: <DOCKERHUB_NAME>/<DOCKERHUB_REPO>/jenkins-demo:<BUILD_NUMBER>
         imagePullPolicy: IfNotPresent
         name: jenkins-demo
         port: 8080

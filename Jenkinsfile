@@ -4,6 +4,7 @@ pipeline {
         branch = 'main'
         scmUrl = 'git@github.com:saintenvoy/jenkins-beginning.git'
         dockerhub = 'registry.cn-hangzhou.aliyuncs.com'
+        dockerhubrepo = 'huorepo'
         DOCKERHUB_CREDENTIALS=credentials('dockerHub')
 
     }
@@ -18,7 +19,7 @@ pipeline {
         stage('docker build') {
             steps {
                 echo "2. docker build"
-                sh 'docker build -t ${dockerhub}/huorepo/jenkins-demo:${BUILD_NUMBER} .'
+                sh 'docker build -t ${dockerhub}/${dockerhubrepo}/jenkins-demo:${BUILD_NUMBER} .'
             }
         }
 
@@ -26,7 +27,7 @@ pipeline {
             steps {          
                 echo "3. docker login & push"
                 sh 'echo ${DOCKERHUB_CREDENTIALS_PSW} | docker login ${dockerhub} -u ${DOCKERHUB_CREDENTIALS_USR} --password-stdin'
-                sh 'docker push ${dockerhub}/huorepo/jenkins-demo:${BUILD_NUMBER}'
+                sh 'docker push ${dockerhub}/${dockerhubrepo}/jenkins-demo:${BUILD_NUMBER}'
             }
         }
 
@@ -35,6 +36,8 @@ pipeline {
                 echo "4. Change YAML File Stage"
                 sh "sed -i 's/<BUILD_NUMBER>/${BUILD_NUMBER}/' deploy.yaml"
                 sh "sed -i 's/<BRANCH_NAME>/${env.BRANCH_NAME}/' deploy.yaml"
+                sh "sed -i 's/<DOCKERHUB_NAME>/${dockerhub}/' deploy.yaml"
+                sh "sed -i 's/<DOCKERHUB_REPO>/${dockerhubrepo}/' deploy.yaml"
             }
             
         }
@@ -51,7 +54,7 @@ pipeline {
     }
     post {
         
-        alway {
+        always {
             sh 'docker logout'
         }
     }
