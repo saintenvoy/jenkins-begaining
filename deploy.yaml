@@ -34,7 +34,4 @@ spec:
       type: NodePort
       port: 8080
       targetPort: 8080
-<<<<<<< HEAD
       nodePort: 30100
-=======
->>>>>>> 1a0f7ac3d30526073a53b2f726dc37fecf977b0d
