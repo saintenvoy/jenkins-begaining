@@ -32,7 +32,7 @@ pipeline {
             steps {
                 echo "4. Change YAML File Stage"
                 sh "sed -i 's/<BUILD_NUMBER>/${BUILD_NUMBER}/' deploy.yaml"
-                sh "sed -i 's/<BRANCH_NAME>/${BRANCH_NAME}/' deploy.yaml"
+                sh "sed -i 's/<BRANCH_NAME>/${env.BRANCH_NAME}/' deploy.yaml"
             }
             
         }
