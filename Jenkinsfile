@@ -31,8 +31,8 @@ pipeline {
         stage ('YAML') {
             steps {
                 echo "4. Change YAML File Stage"
-                sh "sed -i 's/<BUILD_TAG>/${build_tag}/' k8s.yaml"
-                sh "sed -i 's/<BRANCH_NAME>/${env.BRANCH_NAME}/' k8s.yaml"
+                sh "sed -i 's/<BUILD_TAG>/${build_tag}/' deploy.yaml"
+                sh "sed -i 's/<BRANCH_NAME>/${env.BRANCH_NAME}/' deploy.yaml"
             }
             
         }
