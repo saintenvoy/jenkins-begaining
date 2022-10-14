@@ -29,8 +29,12 @@ pipeline {
         }
 
         stage('Deploy to rancher') {
+            steps {
             echo "4. Deploy to rancher"
             sh "kubectl apply -f deploy.yaml"
+            
+            }
+            
         }
 
     }
