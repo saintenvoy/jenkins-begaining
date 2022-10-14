@@ -16,7 +16,7 @@ pipeline {
         stage('docker build') {
             steps {
                 echo "2. docker build"
-                sh 'docker build -t registry.cn-hangzhou.aliyuncs.com/huorepo/jenkins-demo:c .'
+                sh 'docker build -t registry.cn-hangzhou.aliyuncs.com/huorepo/jenkins-demo:${BUILD_NUMBER} .'
             }
         }
 
