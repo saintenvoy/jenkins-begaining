@@ -28,15 +28,18 @@ pipeline {
             }
         }
 
-        stage('YAML') {
-            echo "5. Change YAML File Stage"
-            sh "sed -i 's/<BUILD_TAG>/${build_tag}/' k8s.yaml"
-            sh "sed -i 's/<BRANCH_NAME>/${env.BRANCH_NAME}/' k8s.yaml"
+        stage ('YAML') {
+            steps {
+                echo "4. Change YAML File Stage"
+                sh "sed -i 's/<BUILD_TAG>/${build_tag}/' k8s.yaml"
+                sh "sed -i 's/<BRANCH_NAME>/${env.BRANCH_NAME}/' k8s.yaml"
+            }
+            
         }
 
         stage('Deploy to rancher') {
             steps {
-            echo "4. Deploy to rancher"
+            echo "5. Deploy to rancher"
             sh "kubectl apply -f deploy.yaml"
             
             }
