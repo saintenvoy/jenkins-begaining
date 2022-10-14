@@ -16,7 +16,7 @@ pipeline {
         stage('docker build') {
             steps {
                 echo "2. docker build"
-                sh 'docker build -t registry.cn-hangzhou.aliyuncs.com/huorepo/jenkins-demo:${BUILD_NUMBER} .'
+                sh 'docker build -t registry.cn-hangzhou.aliyuncs.com/huorepo/jenkins-demo:c .'
             }
         }
 
@@ -31,7 +31,7 @@ pipeline {
         stage ('YAML') {
             steps {
                 echo "4. Change YAML File Stage"
-                sh "sed -i 's/<BUILD_TAG>/${build_tag}/' deploy.yaml"
+                sh "sed -i 's/<BUILD_NUMBER>/${build_number}/' deploy.yaml"
                 sh "sed -i 's/<BRANCH_NAME>/${env.BRANCH_NAME}/' deploy.yaml"
             }
             
