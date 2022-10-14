@@ -15,7 +15,8 @@ spec:
       - image: <DOCKERHUB_NAME>/<DOCKERHUB_REPO>/jenkins-demo:<BUILD_NUMBER>
         imagePullPolicy: IfNotPresent
         name: jenkins-demo
-        port: 8080
+        ports: 
+          containerPort: 8080
         env:
         - name: branch
           value: <BRANCH_NAME>
