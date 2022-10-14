@@ -28,8 +28,7 @@ metadata:
   name: jenkins-svc
 spec:
   selector:
-    matchLabels:
-      app: jenkins-demo
+    app: jenkins-demo
   ports:
     - protocol: TCP
       port: 8080
