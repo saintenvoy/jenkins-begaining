@@ -6,8 +6,8 @@ def response = httpRequest customHeaders: [
      [name: 'Host', value: 'localhost']],
      url: "http://localhost/apirest.php/initSession"
 
-def json = new groovy.json.JsonSlurper().parseText(response)
-
+def jsonSlurper = new JsonSlurper()
+def json = jsonSlurper.parseText(response)
 pipeline {
     agent any
     environment {
