@@ -1,4 +1,4 @@
-def response =  httpRequest customHeaders: [["App-Token: p4cUwbInKDHoTNnOUymAwkzpDsV7Gw5lNkpcUSFU", "Authorization: user_token Cm2zQITkuR7SmzqmpLwDO0EshkSB1bfDYD7abSu4", "Host: cncappdlv5055.asia.pwcinternal.com:8000"]],
+def response =  httpRequest customHeaders: [[name:"App-Token", value:"p4cUwbInKDHoTNnOUymAwkzpDsV7Gw5lNkpcUSFU", name:"Authorization", value:"user_token Cm2zQITkuR7SmzqmpLwDO0EshkSB1bfDYD7abSu4", name:"Host", value:"cncappdlv5055.asia.pwcinternal.com:8000"]],
      url: "http://cncappdlv5055.asia.pwcinternal.com:8000/apirest.php/initSession"
 
 pipeline {
