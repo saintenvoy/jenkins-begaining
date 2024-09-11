@@ -23,7 +23,7 @@ pipeline {
 
         stage('Hello') {
           steps {
-            echo "${response.content.keySet()}"
+            echo "${response.content.value()}"
      }
   }
 }
