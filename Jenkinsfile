@@ -8,11 +8,6 @@ def response = httpRequest customHeaders: [
 def json = new JsonSlurper().parseText(response.content)
 pipeline {
     agent any
-    environment {
-        branch = 'main'
-        scmUrl = 'https://github.com/saintenvoy/jenkins-beginning.git'
-
-    }
     stages {
 
           stage('Hello') {
