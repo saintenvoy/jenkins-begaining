@@ -6,8 +6,6 @@ def response = httpRequest customHeaders: [
      [name: 'Host', value: 'localhost']],
      url: "http://localhost/apirest.php/initSession"
 
-def json = new JsonSlurper().parseText(response.content)
-
 pipeline {
     agent any
     environment {
@@ -25,7 +23,7 @@ pipeline {
 
         stage('Hello') {
           steps {
-            echo "${json.message.keySet()}"
+            echo "${response.content}"
      }
   }
 }
