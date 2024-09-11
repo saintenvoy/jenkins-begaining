@@ -23,10 +23,9 @@ pipeline {
             }
         }
 
-          stage('Hello') {
-
-     steps {
-          echo "${json.message.keySet()}"
+        stage('Hello') {
+          steps {
+            echo "${json.message.keySet()}"
      }
   }
 }
