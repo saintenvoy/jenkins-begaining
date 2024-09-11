@@ -30,22 +30,4 @@ pipeline {
             }
             
         }
-
-        stage('Deploy to rancher') {
-            steps {
-            echo "5. Deploy to rancher"
-            sh "kubectl apply -f deploy.yaml"
-            
-            }
-            
-        }
-
-    }
-    post {
-        
-        always {
-            sh 'docker logout'
-        }
-    }
-
 }
