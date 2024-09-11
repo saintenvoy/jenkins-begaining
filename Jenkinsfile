@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         branch = 'main'
-        scmUrl = 'git@github.com:saintenvoy/jenkins-beginning.git'
+        scmUrl = 'https://github.com/saintenvoy/jenkins-beginning.git'
 
     }
     stages {
