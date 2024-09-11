@@ -1,5 +1,5 @@
-def response =  curl --location --request GET "http://cncappdlv5055.asia.pwcinternal.com:8000/apirest.php/initSession" --header "App-Token: p4cUwbInKDHoTNnOUymAwkzpDsV7Gw5lNkpcUSFU" --header "Authorization: user_token Cm2zQITkuR7SmzqmpLwDO0EshkSB1bfDYD7abSu4" --header "Host: cncappdlv5055.asia.pwcinternal.com:8000"
-
+def response =  httpRequest customHeaders: [["App-Token: p4cUwbInKDHoTNnOUymAwkzpDsV7Gw5lNkpcUSFU", "Authorization: user_token Cm2zQITkuR7SmzqmpLwDO0EshkSB1bfDYD7abSu4", "Host: cncappdlv5055.asia.pwcinternal.com:8000"]],
+     url: "http://cncappdlv5055.asia.pwcinternal.com:8000/apirest.php/initSession"
 
 pipeline {
     agent any
