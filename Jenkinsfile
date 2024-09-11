@@ -3,7 +3,6 @@ def response = httpRequest customHeaders: [
      [name: 'Authorization', value: 'user_token Cm2zQITkuR7SmzqmpLwDO0EshkSB1bfDYD7abSu4'], 
      [name: 'Host', value: 'cncappdlv5055.asia.pwcinternal.com:8000']],
      url: "http://cncappdlv5055.asia.pwcinternal.com:8000/apirest.php/initSession"
-     println("Response: ${response.content}")
 
 pipeline {
     agent any
@@ -13,17 +12,11 @@ pipeline {
 
     }
     stages {
-        stage('checkout git') {
-            steps {
-                echo "1. checkout git"
-                git branch: branch, url: scmUrl
-            }
-        }
 
           stage('Hello') {
 
      steps {
-          echo ("Response: ${response.content}")
+          echo ${response.content}
      }
   }
 }
