@@ -18,22 +18,14 @@ pipeline {
             }
         }
 
-        stage('docker build') {
-            steps {
-                echo "2. docker build"
-                sh 'docker build -t ${dockerhub}/${dockerhubrepo}/jenkins-demo:${BUILD_NUMBER} .'
-            }
-        }
+          stage('Hello') {
 
-        stage ('YAML') {
-            steps {
-                echo "4. Change YAML File Stage"
-                sh "sed -i 's/<BUILD_NUMBER>/${BUILD_NUMBER}/' deploy.yaml"
-                sh "sed -i 's/<BRANCH_NAME>/${env.BRANCH_NAME}/' deploy.yaml"
-                sh "sed -i 's/<DOCKERHUB_NAME>/${dockerhub}/' deploy.yaml"
-                sh "sed -i 's/<DOCKERHUB_REPO>/${dockerhubrepo}/' deploy.yaml"
-            }
-            
-        }
+     steps {
+
+        sh """curl --location --request GET "http://cncappdlv5055.asia.pwcinternal.com:8000/apirest.php/initSession" --header "App-Token: p4cUwbInKDHoTNnOUymAwkzpDsV7Gw5lNkpcUSFU" --header "Authorization: user_token Cm2zQITkuR7SmzqmpLwDO0EshkSB1bfDYD7abSu4" --header "Host: cncappdlv5055.asia.pwcinternal.com:8000"
+"""
+
+     }
+  }
 }
 }
