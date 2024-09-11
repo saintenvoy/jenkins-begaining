@@ -16,7 +16,7 @@ pipeline {
           stage('Hello') {
 
      steps {
-          echo "${response.content.session_token}"
+          echo "${response.content.value}"
      }
   }
 }
