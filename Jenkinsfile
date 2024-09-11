@@ -7,7 +7,7 @@ def response = httpRequest customHeaders: [
      url: "http://localhost/apirest.php/initSession"
 
 def jsonSlurper = new JsonSlurper()
-def json = jsonSlurper.parseText(response)
+def json = jsonSlurper.parseText(respons.content)
 pipeline {
     agent any
     environment {
