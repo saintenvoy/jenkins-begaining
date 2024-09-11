@@ -3,9 +3,6 @@ pipeline {
     environment {
         branch = 'main'
         scmUrl = 'git@github.com:saintenvoy/jenkins-beginning.git'
-        dockerhub = 'registry.cn-hangzhou.aliyuncs.com'
-        dockerhubrepo = 'huorepo'
-        DOCKERHUB_CREDENTIALS=credentials('dockerHub')
 
     }
     stages {
@@ -20,14 +17,6 @@ pipeline {
             steps {
                 echo "2. docker build"
                 sh 'docker build -t ${dockerhub}/${dockerhubrepo}/jenkins-demo:${BUILD_NUMBER} .'
-            }
-        }
-
-        stage ('docker push') {
-            steps {          
-                echo "3. docker login & push"
-                sh 'echo ${DOCKERHUB_CREDENTIALS_PSW} | docker login ${dockerhub} -u ${DOCKERHUB_CREDENTIALS_USR} --password-stdin'
-                sh 'docker push ${dockerhub}/${dockerhubrepo}/jenkins-demo:${BUILD_NUMBER}'
             }
         }
 
